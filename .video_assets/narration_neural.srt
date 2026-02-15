@@ -1,0 +1,243 @@
+1
+00:00:00,000 --> 00:00:05,511
+Welcome to Vibe Sentinel, the agentic reliability layer for fast-moving project teams.
+
+2
+00:00:05,511 --> 00:00:13,142
+In the next four minutes, I will show the complete workflow from first audit to submission-ready output.
+
+3
+00:00:13,142 --> 00:00:21,196
+The goal is simple: keep the speed of vibe coding, but remove the risk of shipping a fragile demo.
+
+4
+00:00:21,196 --> 00:00:23,740
+We start on the Tutorial page.
+
+5
+00:00:23,740 --> 00:00:27,131
+This page is intentionally concise and marketing-forward.
+
+6
+00:00:27,131 --> 00:00:36,458
+A beginner can immediately understand the product promise, the three-step loop, and the value they will get in the first run.
+
+7
+00:00:36,458 --> 00:00:45,360
+The score cards show a realistic before-and-after story, and the call to action moves directly into the working dashboard.
+
+8
+00:00:45,360 --> 00:00:47,480
+Now we open the Dashboard.
+
+9
+00:00:47,480 --> 00:00:51,295
+This is the operational home for the full lifecycle.
+
+10
+00:00:51,295 --> 00:00:54,687
+At the top, we set a project path.
+
+11
+00:00:54,687 --> 00:00:57,654
+Then we use the beginner lane first.
+
+12
+00:00:57,654 --> 00:01:05,709
+Run Audit is the baseline check, and Launch Ship Sequence is the one-command path to improve project quality.
+
+13
+00:01:05,709 --> 00:01:09,948
+Everything else can stay hidden until the user is ready.
+
+14
+00:01:09,948 --> 00:01:12,916
+I start the built-in beginner tutorial.
+
+15
+00:01:12,916 --> 00:01:20,122
+This creates a guided sequence with visible progress, so new users know exactly what to do next.
+
+16
+00:01:20,122 --> 00:01:20,970
+No guessing.
+
+17
+00:01:20,970 --> 00:01:23,090
+No reading long docs first.
+
+18
+00:01:23,090 --> 00:01:27,329
+Just a concrete path from zero to an improved score.
+
+19
+00:01:27,329 --> 00:01:29,873
+Now we run the baseline audit.
+
+20
+00:01:29,873 --> 00:01:34,960
+Vibe Sentinel scans the repo and scores usefulness, impact, execution, and innovation.
+
+21
+00:01:34,960 --> 00:01:41,319
+It also identifies practical blockers like missing tests, weak documentation, absent CI, and artifact gaps.
+
+22
+00:01:41,319 --> 00:01:44,286
+The point is not to produce noise.
+
+23
+00:01:44,286 --> 00:01:48,102
+The point is to create an ordered, fixable plan.
+
+24
+00:01:48,102 --> 00:01:53,189
+After the audit finishes, we scroll through the score breakdown and recommendations.
+
+25
+00:01:53,189 --> 00:01:59,972
+You can immediately see where the project is weak and what actions provide the highest lift.
+
+26
+00:01:59,972 --> 00:02:08,026
+This is critical in hackathon settings, where teams do not have time to manually triage dozens of quality issues.
+
+27
+00:02:08,026 --> 00:02:12,690
+Next, I enable advanced actions and run them one by one.
+
+28
+00:02:12,690 --> 00:02:16,929
+Agent Pack turns findings into structured tasks for coding agents.
+
+29
+00:02:16,929 --> 00:02:20,744
+Coach generates beginner-friendly fix cards in plain language.
+
+30
+00:02:20,744 --> 00:02:25,831
+Roadmap generates a practical sequence so improvements happen in the right order.
+
+31
+00:02:25,831 --> 00:02:29,647
+These outputs reduce context switching between humans and agents.
+
+32
+00:02:29,647 --> 00:02:32,614
+Now we launch the full Ship Sequence.
+
+33
+00:02:32,614 --> 00:02:39,821
+This orchestrates the complete improvement loop:
+audit, task generation, coaching, roadmap, safe starter files, and re-check.
+
+34
+00:02:39,821 --> 00:02:45,332
+Instead of running multiple commands manually, teams execute one workflow and keep momentum.
+
+35
+00:02:45,332 --> 00:02:50,843
+This is where Vibe Sentinel becomes a true killer app for agentic development.
+
+36
+00:02:50,843 --> 00:02:54,658
+After Ship Sequence completes, we start Demo Tour mode.
+
+37
+00:02:54,658 --> 00:02:59,746
+Demo Tour automatically highlights the narrative flow for recordings and live presentations.
+
+38
+00:02:59,746 --> 00:03:05,681
+It gives you a stable, repeatable story:
+score story, findings, tasks, artifacts, and timeline.
+
+39
+00:03:05,681 --> 00:03:10,768
+That means less presentation chaos and a more credible demo under pressure.
+
+40
+00:03:10,768 --> 00:03:13,735
+Now we move to the Artifacts page.
+
+41
+00:03:13,735 --> 00:03:16,279
+This page is focused and fast.
+
+42
+00:03:16,279 --> 00:03:23,486
+You can refresh artifacts from audit, run ship plus refresh, and preview generated outputs in one place.
+
+43
+00:03:23,486 --> 00:03:29,421
+Everything needed for judges is centralized:
+report files, coaching output, roadmap, and agent prompts.
+
+44
+00:03:29,421 --> 00:03:32,388
+No hunting through folders while screen sharing.
+
+45
+00:03:32,388 --> 00:03:36,203
+From here, I trigger another refresh and ship cycle.
+
+46
+00:03:36,203 --> 00:03:41,714
+This shows that the flow is repeatable, not a one-time scripted success.
+
+47
+00:03:41,714 --> 00:03:45,530
+A reliable process is the real differentiator in competitions.
+
+48
+00:03:45,530 --> 00:03:47,649
+Anyone can generate code quickly.
+
+49
+00:03:47,649 --> 00:03:51,041
+Far fewer teams can prove consistent execution quality.
+
+50
+00:03:51,041 --> 00:03:53,584
+Next we open the OpenClaw page.
+
+51
+00:03:53,584 --> 00:03:57,824
+This is the bridge for external agent orchestration over HTTP.
+
+52
+00:03:57,824 --> 00:04:04,607
+I set the project path, probe bridge status, and run an action through the bridge endpoint.
+
+53
+00:04:04,607 --> 00:04:09,694
+You can also copy cURL or JSON request payloads for automation workflows.
+
+54
+00:04:09,694 --> 00:04:13,933
+This makes Vibe Sentinel useful beyond a single UI session.
+
+55
+00:04:13,933 --> 00:04:16,901
+Finally, we return to the Tutorial page.
+
+56
+00:04:16,901 --> 00:04:20,292
+This closes the loop between discoverability and execution.
+
+57
+00:04:20,292 --> 00:04:27,499
+The tutorial communicates the value clearly, and the studio proves it with real outputs and score movement.
+
+58
+00:04:27,499 --> 00:04:39,793
+If you are building with coding agents, this is the core advantage:
+Vibe Sentinel gives you deterministic checkpoints, structured handoff, and submission-ready artifacts without slowing down creative velocity.
+
+59
+00:04:39,793 --> 00:04:41,488
+You still build fast.
+
+60
+00:04:41,488 --> 00:04:43,608
+You just ship with confidence.
