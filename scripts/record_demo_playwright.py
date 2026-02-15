@@ -126,16 +126,17 @@ def run_walkthrough(base_url: str, project_path: str, out_video_path: Path) -> N
         scroll_smooth(page, 560, 12, 130)
         wait_until_mark(page, start, 241)
 
-        recorded_video = page.video
         context.close()
         browser.close()
 
-    if not recorded_video:
-        raise RuntimeError("Playwright did not produce a video file.")
-
-    raw_path = Path(recorded_video.path())
-    if not raw_path.exists():
-        raise RuntimeError(f"Expected recorded video at {raw_path}, but file was missing.")
+    candidates = sorted(
+        temp_video_dir.glob("*.webm"),
+        key=lambda path: path.stat().st_mtime,
+        reverse=True,
+    )
+    if not candidates:
+        raise RuntimeError(f"Playwright did not produce a video file in {temp_video_dir}")
+    raw_path = candidates[0]
 
     if out_video_path.exists():
         out_video_path.unlink()
