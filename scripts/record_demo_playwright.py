@@ -47,6 +47,19 @@ def safe_click(page, selector: str, timeout_ms: int = 8_000) -> None:
     page.locator(selector).first.click(timeout=timeout_ms)
 
 
+def clear_and_type(page, selector: str, value: str, delay_ms: int = 85) -> None:
+    field = page.locator(selector).first
+    field.click(timeout=8_000)
+    for combo in ("Meta+A", "Control+A"):
+        try:
+            page.keyboard.press(combo)
+        except Exception:
+            pass
+    page.keyboard.press("Backspace")
+    page.keyboard.type(value, delay=delay_ms)
+    page.wait_for_timeout(500)
+
+
 def run_walkthrough(base_url: str, project_path: str, out_video_path: Path) -> None:
     out_video_path.parent.mkdir(parents=True, exist_ok=True)
     temp_video_dir = out_video_path.parent / "pw_tmp_video"
@@ -65,66 +78,94 @@ def run_walkthrough(base_url: str, project_path: str, out_video_path: Path) -> N
         start = time.monotonic()
 
         page.goto(f"{base_url}/tutorial.html", wait_until="domcontentloaded")
-        page.wait_for_timeout(2_000)
-        scroll_smooth(page, 900, 16, 140)
-        wait_until_mark(page, start, 24)
+        page.wait_for_timeout(2_500)
+        scroll_smooth(page, 980, 18, 140)
+        page.wait_for_timeout(1_000)
+        scroll_smooth(page, -300, 8, 120)
+        wait_until_mark(page, start, 34)
 
         safe_click(page, "a.nav-link:has-text('Dashboard')")
-        page.wait_for_timeout(1_500)
-        page.fill("#projectPath", project_path)
-        page.wait_for_timeout(600)
+        page.wait_for_timeout(1_700)
+        clear_and_type(page, "#projectPath", project_path, delay_ms=110)
         safe_click(page, "#tutorialStartBtn")
-        page.wait_for_timeout(1_000)
+        page.wait_for_timeout(1_100)
         safe_click(page, "#tutorialNextBtn")
-        page.wait_for_timeout(1_000)
-        wait_until_mark(page, start, 48)
+        page.wait_for_timeout(1_100)
+        wait_until_mark(page, start, 70)
 
         safe_click(page, "#auditBtn")
-        page.wait_for_timeout(14_000)
-        scroll_smooth(page, 900, 14, 120)
+        page.wait_for_timeout(15_000)
+        scroll_smooth(page, 980, 14, 130)
+        page.wait_for_timeout(1_300)
+        sim_boxes = page.locator("input[data-sim-id]")
+        if sim_boxes.count() > 0:
+            sim_boxes.nth(0).click()
+            page.wait_for_timeout(600)
+        if sim_boxes.count() > 1:
+            sim_boxes.nth(1).click()
+            page.wait_for_timeout(800)
+        scroll_smooth(page, 840, 10, 120)
         page.wait_for_timeout(1_500)
-        scroll_smooth(page, -380, 8, 110)
-        wait_until_mark(page, start, 92)
+        scroll_smooth(page, -650, 12, 110)
+        wait_until_mark(page, start, 142)
 
         safe_click(page, "#toggleAdvancedBtn")
         page.wait_for_timeout(700)
         safe_click(page, "#packBtn")
-        page.wait_for_timeout(8_000)
+        page.wait_for_timeout(8_500)
         safe_click(page, "#coachBtn")
-        page.wait_for_timeout(6_000)
-        safe_click(page, "#roadmapBtn")
         page.wait_for_timeout(7_000)
-        wait_until_mark(page, start, 132)
+        safe_click(page, "#roadmapBtn")
+        page.wait_for_timeout(8_000)
+        if page.locator("#artifactList .artifact-item").count() > 0:
+            page.locator("#artifactList .artifact-item").first.click()
+            page.wait_for_timeout(1_100)
+        wait_until_mark(page, start, 190)
 
         safe_click(page, "#shipBtn")
-        page.wait_for_timeout(20_000)
+        page.wait_for_timeout(22_000)
         safe_click(page, "#startTourBtn")
-        page.wait_for_timeout(11_000)
-        wait_until_mark(page, start, 176)
+        page.wait_for_timeout(12_000)
+        scroll_smooth(page, 700, 10, 120)
+        page.wait_for_timeout(1_400)
+        wait_until_mark(page, start, 228)
 
         safe_click(page, "a.nav-link:has-text('Artifacts')")
         page.wait_for_timeout(1_500)
-        page.fill("#artifactsProjectPath", project_path)
-        page.wait_for_timeout(500)
+        clear_and_type(page, "#artifactsProjectPath", project_path, delay_ms=95)
         safe_click(page, "#artifactsRefreshBtn")
         page.wait_for_timeout(10_000)
+        if page.locator("#artifactsPageList .artifact-item").count() > 0:
+            page.locator("#artifactsPageList .artifact-item").first.click()
+            page.wait_for_timeout(1_300)
+        safe_click(page, "#artifactsCopyBtn")
+        page.wait_for_timeout(900)
         safe_click(page, "#artifactsShipBtn")
-        page.wait_for_timeout(14_000)
-        wait_until_mark(page, start, 214)
+        page.wait_for_timeout(16_000)
+        wait_until_mark(page, start, 262)
 
         safe_click(page, "a.nav-link:has-text('OpenClaw')")
         page.wait_for_timeout(1_500)
-        page.fill("#openclawProjectPath", project_path)
-        page.wait_for_timeout(500)
+        clear_and_type(page, "#openclawProjectPath", project_path, delay_ms=95)
         safe_click(page, "#openclawProbeBtn")
-        page.wait_for_timeout(3_500)
+        page.wait_for_timeout(4_000)
+        page.locator("#openclawAction").select_option("audit")
+        page.wait_for_timeout(500)
         safe_click(page, "#openclawRunBtn")
-        page.wait_for_timeout(6_000)
+        page.wait_for_timeout(6_500)
+        safe_click(page, "#openclawCopyCurlBtn")
+        page.wait_for_timeout(700)
+        safe_click(page, "#openclawCopyRequestBtn")
+        page.wait_for_timeout(800)
+        wait_until_mark(page, start, 286)
 
-        safe_click(page, "a.nav-link:has-text('Tutorial')")
+        safe_click(page, "a.nav-link:has-text('Dashboard')")
         page.wait_for_timeout(1_500)
-        scroll_smooth(page, 560, 12, 130)
-        wait_until_mark(page, start, 241)
+        clear_and_type(page, "#projectPath", project_path, delay_ms=125)
+        safe_click(page, "#auditBtn")
+        page.wait_for_timeout(11_000)
+        wait_until_mark(page, start, 296)
+        page.wait_for_timeout(1_500)
 
         context.close()
         browser.close()
@@ -146,8 +187,8 @@ def run_walkthrough(base_url: str, project_path: str, out_video_path: Path) -> N
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Record a 4-minute Vibe Sentinel click-through with Playwright.")
-    parser.add_argument("--project-path", default="/tmp/vibe_demo", help="Path set in the Studio project input.")
+    parser = argparse.ArgumentParser(description="Record a ~5-minute Vibe Sentinel click-through with Playwright.")
+    parser.add_argument("--project-path", default="demo-repo-video", help="Path typed in the Studio project input.")
     parser.add_argument("--host", default="127.0.0.1", help="Studio host")
     parser.add_argument("--port", type=int, default=8765, help="Studio port")
     parser.add_argument(
@@ -186,6 +227,7 @@ def main() -> int:
 
     studio = subprocess.Popen(
         studio_cmd,
+        cwd=str(Path(__file__).resolve().parents[1]),
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
     )

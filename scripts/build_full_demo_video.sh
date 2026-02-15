@@ -5,14 +5,15 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_DIR="${ROOT_DIR}/.video_output"
 ASSETS_DIR="${ROOT_DIR}/.video_assets"
 DEMO_REPO="${ROOT_DIR}/demo-repo-video"
-PROJECT_ALIAS="/tmp/vibe_demo"
+PROJECT_NAME="demo-repo-video"
+NARRATION_TEXT_FILE="${ROOT_DIR}/VIDEO_NARRATION_5MIN.txt"
 
 RAW_VIDEO="${ASSETS_DIR}/walkthrough_raw.webm"
 BASE_VIDEO="${ASSETS_DIR}/walkthrough_base.mp4"
 NARRATION_MP3="${ASSETS_DIR}/narration_neural.mp3"
 NARRATION_SRT="${ASSETS_DIR}/narration_neural.srt"
 NARRATION_PADDED="${ASSETS_DIR}/narration_neural_padded.m4a"
-FINAL_VIDEO="${1:-${OUT_DIR}/vibe_sentinel_demo_4min.mp4}"
+FINAL_VIDEO="${1:-${OUT_DIR}/vibe_sentinel_demo_5min.mp4}"
 
 mkdir -p "${OUT_DIR}" "${ASSETS_DIR}"
 
@@ -28,18 +29,17 @@ fi
 
 echo "Preparing fresh demo project..."
 "${ROOT_DIR}/scripts/create_video_demo_repo.sh" "${DEMO_REPO}" --force
-ln -sfn "${DEMO_REPO}" "${PROJECT_ALIAS}"
 
-echo "Recording full click-through walkthrough (~4 minutes)..."
+echo "Recording full click-through walkthrough (~5 minutes)..."
 source "${ROOT_DIR}/.venv/bin/activate"
 python "${ROOT_DIR}/scripts/record_demo_playwright.py" \
-  --project-path "${PROJECT_ALIAS}" \
+  --project-path "${PROJECT_NAME}" \
   --output "${RAW_VIDEO}" \
   --host 127.0.0.1 \
   --port 8765
 
 echo "Generating lifelike male neural narration..."
-python - "${ROOT_DIR}" "${NARRATION_MP3}" <<'PY'
+python - "${ROOT_DIR}" "${NARRATION_MP3}" "${NARRATION_TEXT_FILE}" <<'PY'
 import asyncio
 import sys
 from pathlib import Path
@@ -48,9 +48,10 @@ import edge_tts
 
 root = Path(sys.argv[1])
 out_path = Path(sys.argv[2])
-text = (root / "VIDEO_NARRATION_4MIN.txt").read_text(encoding="utf-8").strip()
+text_path = Path(sys.argv[3])
+text = text_path.read_text(encoding="utf-8").strip()
 voice = "en-US-AndrewNeural"
-rate = "-8%"
+rate = "+10%"
 
 async def main() -> None:
     communicate = edge_tts.Communicate(text=text, voice=voice, rate=rate)
@@ -61,7 +62,7 @@ print(f"wrote narration: {out_path}")
 PY
 
 echo "Creating timed subtitles..."
-python - "${ROOT_DIR}" "${NARRATION_MP3}" "${NARRATION_SRT}" <<'PY'
+python - "${ROOT_DIR}" "${NARRATION_MP3}" "${NARRATION_SRT}" "${NARRATION_TEXT_FILE}" <<'PY'
 import re
 import subprocess
 import sys
@@ -70,7 +71,8 @@ from pathlib import Path
 root = Path(sys.argv[1])
 audio_path = Path(sys.argv[2])
 srt_path = Path(sys.argv[3])
-text = (root / "VIDEO_NARRATION_4MIN.txt").read_text(encoding="utf-8").strip()
+text_path = Path(sys.argv[4])
+text = text_path.read_text(encoding="utf-8").strip()
 sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
 if not sentences:
     raise SystemExit("narration text is empty")
@@ -128,13 +130,24 @@ echo "Normalizing video container..."
 ffmpeg -y -i "${RAW_VIDEO}" -an -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p "${BASE_VIDEO}" >/dev/null 2>&1
 
 VIDEO_DURATION="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "${BASE_VIDEO}")"
+NARRATION_DURATION="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "${NARRATION_MP3}")"
+VIDEO_FOR_MUX="${BASE_VIDEO}"
+
+if awk "BEGIN {exit !(${NARRATION_DURATION} > ${VIDEO_DURATION})}"; then
+  EXTRA_SECONDS="$(awk "BEGIN {print ${NARRATION_DURATION}-${VIDEO_DURATION}+0.25}")"
+  EXTENDED_VIDEO="${ASSETS_DIR}/walkthrough_base_extended.mp4"
+  echo "Narration exceeds video by ~${EXTRA_SECONDS}s; extending video tail..."
+  ffmpeg -y -i "${BASE_VIDEO}" -vf "tpad=stop_mode=clone:stop_duration=${EXTRA_SECONDS}" -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p -an "${EXTENDED_VIDEO}" >/dev/null 2>&1
+  VIDEO_FOR_MUX="${EXTENDED_VIDEO}"
+  VIDEO_DURATION="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "${VIDEO_FOR_MUX}")"
+fi
 
 echo "Padding narration to full walkthrough duration (${VIDEO_DURATION}s)..."
 ffmpeg -y -i "${NARRATION_MP3}" -af "apad" -t "${VIDEO_DURATION}" -c:a aac -b:a 192k "${NARRATION_PADDED}" >/dev/null 2>&1
 
 echo "Muxing final MP4 with subtitle track..."
 ffmpeg -y \
-  -i "${BASE_VIDEO}" \
+  -i "${VIDEO_FOR_MUX}" \
   -i "${NARRATION_PADDED}" \
   -i "${NARRATION_SRT}" \
   -map 0:v:0 \

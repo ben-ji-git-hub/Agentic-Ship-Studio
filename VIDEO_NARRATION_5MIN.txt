@@ -1,0 +1,113 @@
+This demo is for a typical vibe coder who builds fast with coding agents and then needs to ship something reliable.
+Most teams can generate prototypes quickly.
+The hard part is turning that prototype into a submission that survives judging, handoff, and real usage.
+Vibe Sentinel is built for that gap.
+It keeps your speed, but adds a repeatable quality loop.
+
+We start on the Tutorial page.
+This page is intentionally concise.
+In one screen, it markets the promise, explains the loop, and shows a realistic before and after outcome.
+For a solo builder, this is your fast onboarding.
+For a team lead, this is the page you share with new contributors so everyone understands the workflow in under a minute.
+The three-step structure is simple.
+Run audit.
+Run ship sequence.
+Follow coach cards.
+No jargon needed.
+
+Now we open the Dashboard.
+This is where the product actually operates.
+The first thing we do is type the project folder directly into the path bar.
+Here I type demo-repo-video.
+This mirrors a real workflow where you point the tool at your current repo and run immediately.
+You do not have to restructure your project or set up complex configuration first.
+
+Next, we start the beginner tutorial in the dashboard.
+This guided track is useful when a teammate is new to quality tooling or new to agent workflows.
+Instead of guessing what to click, they follow an explicit sequence with visible progress.
+That lowers onboarding friction and reduces mistakes during a deadline sprint.
+
+Now we run the baseline audit.
+This gives us the initial score and a categorized quality map across usefulness, impact, execution, and innovation.
+For a vibe coder, this is your objective checkpoint.
+You are no longer relying on gut feel about readiness.
+You get a measurable baseline and concrete findings.
+
+We scroll through the dashboard to inspect the output.
+You can see top actions and open findings.
+This is where teams usually lose time by manually triaging.
+Vibe Sentinel shortens that loop by ranking what matters most first.
+
+Now we use the What-If Simulator.
+We toggle likely fixes and preview projected score lift before touching code.
+For an agent-driven workflow, this helps you allocate agent time to the highest-yield tasks.
+Instead of firing agents at random cleanup, you choose fixes that move the score most.
+
+Next we open advanced actions.
+These actions are intentionally hidden by default so beginners are not overwhelmed.
+When you are ready, you unlock the full toolkit.
+
+First is Agent Pack.
+This converts findings into structured, execution-ready tasks for coding agents.
+Typical use case:
+you run one command, copy a task prompt into your coding agent, and execute in severity order.
+That means less prompt writing and more consistent output quality.
+
+Second is Coach.
+Coach generates beginner-friendly action cards in plain English.
+This is useful for non-specialists, student teams, or anyone who needs a clear fix path with verification steps.
+It translates technical findings into practical actions you can run immediately.
+
+Third is Roadmap.
+Roadmap turns findings into an ordered plan.
+For teams, this helps with parallel execution.
+One person can tackle docs and CI while an agent handles tests and scaffolding.
+You preserve momentum without stepping on each other.
+
+Now we run the full Ship Sequence.
+This is the one-command operating mode.
+It orchestrates audit, agent pack, coach, roadmap, safe starter generation, and re-check.
+For a typical vibe coder, this is the killer flow.
+You can build creatively, then run Ship Sequence to harden the project for submission.
+It gives you confidence without forcing heavyweight process.
+
+After the ship run, we start Demo Tour mode.
+Demo Tour highlights the presentation storyline automatically.
+This matters in competitions and client demos because it keeps your walkthrough coherent.
+Even under time pressure, you can tell a clean story from score to findings to artifacts.
+
+Now we move to the Artifacts page.
+This page centralizes generated outputs.
+You can refresh artifacts, run ship plus refresh, preview files, and copy content in one place.
+For a builder, this is where you collect everything needed for submission:
+reports, prompts, runbooks, coach output, and roadmap docs.
+No folder hunting during recording.
+
+We trigger refresh and ship plus refresh to show repeatability.
+This is not a one-off scripted success.
+The same flow can run multiple times as your project evolves.
+That is important for real projects where requirements keep changing.
+
+Now we open the OpenClaw page.
+This is the bridge for external agent orchestration over HTTP.
+We type the same project path, probe bridge status, and run an action through the bridge.
+Then we copy cURL and request JSON.
+Use case:
+you can call Vibe Sentinel from another local tool, orchestrator, or custom agent pipeline.
+That makes the system composable, not siloed inside one page.
+
+Finally, we return to the Dashboard and type demo-repo-video into the path bar again.
+Then we run audit to confirm end-to-end operation from typed path to actionable result.
+This last step proves the workflow is practical:
+point at a real folder, run, and get structured output fast.
+
+For a typical vibe coder using agents, the value is straightforward.
+You keep the speed of rapid generation.
+You gain deterministic checkpoints.
+You get agent-ready task handoff.
+You get beginner-friendly guidance.
+You get submission artifacts without manual chaos.
+
+That combination is the differentiator.
+Vibe Sentinel is not just another dashboard.
+It is an execution layer that turns fast prototypes into credible, shippable projects.
