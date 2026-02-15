@@ -1,0 +1,9 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signal-garden-demo"
+version = "0.1.0"
+description = "Prototype for focused planning with lightweight agent hints"
+requires-python = ">=3.11"

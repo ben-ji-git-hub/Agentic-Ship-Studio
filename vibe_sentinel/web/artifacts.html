@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Sentinel Studio - Artifacts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <div id="fluidSpotlight" class="fluid-spotlight"></div>
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <main class="studio">
+      <nav class="panel top-nav">
+        <a href="/index.html" class="nav-link">Dashboard</a>
+        <a href="/artifacts.html" class="nav-link active">Artifacts</a>
+        <a href="/openclaw.html" class="nav-link">OpenClaw</a>
+        <a href="/tutorial.html" class="nav-link">Tutorial</a>
+      </nav>
+
+      <header class="panel hero" data-float="card">
+        <div>
+          <p class="eyebrow">ARTIFACT EXPLORER</p>
+          <h1>Generated Outputs</h1>
+          <p class="subtitle">
+            Focused page for browsing `.vibe-sentinel` outputs with fast preview and one-click regeneration.
+          </p>
+        </div>
+      </header>
+
+      <section class="panel controls" data-float="card">
+        <div class="path-grid">
+          <label for="artifactsProjectPath">Project Path</label>
+          <input id="artifactsProjectPath" placeholder="/absolute/path/to/project" />
+        </div>
+        <div class="action-grid action-grid-compact">
+          <button id="artifactsRefreshBtn" class="btn btn-secondary">Refresh Artifacts</button>
+          <button id="artifactsShipBtn" class="btn btn-primary">Run Ship + Refresh</button>
+        </div>
+      </section>
+
+      <section class="outputs">
+        <article class="panel artifacts" data-float="card">
+          <h2>Artifact List</h2>
+          <ul id="artifactsPageList" class="artifact-list"></ul>
+        </article>
+
+        <article class="panel preview" data-float="card">
+          <div class="preview-head">
+            <h2 id="artifactsPagePreviewTitle">Preview</h2>
+            <button id="artifactsCopyBtn" class="btn btn-ghost">Copy</button>
+          </div>
+          <pre id="artifactsPagePreview">Run an action to populate artifacts.</pre>
+        </article>
+      </section>
+
+      <section class="panel timeline" data-float="card">
+        <h2>Activity</h2>
+        <ol id="artifactsPageTimeline"></ol>
+      </section>
+    </main>
+
+    <div id="artifactsPageToast" class="toast"></div>
+    <script src="/fluid.js" defer></script>
+    <script src="/artifacts.js" defer></script>
+  </body>
+</html>

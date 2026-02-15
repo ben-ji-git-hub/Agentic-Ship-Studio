@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Sentinel Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <div id="fluidSpotlight" class="fluid-spotlight"></div>
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <main class="studio">
+      <nav class="panel top-nav">
+        <a href="/index.html" class="nav-link active">Dashboard</a>
+        <a href="/artifacts.html" class="nav-link">Artifacts</a>
+        <a href="/openclaw.html" class="nav-link">OpenClaw</a>
+        <a href="/tutorial.html" class="nav-link">Tutorial</a>
+      </nav>
+      <header class="panel hero">
+        <div>
+          <p class="eyebrow">VIBE SENTINEL</p>
+          <h1>Agentic Ship Studio</h1>
+          <p class="subtitle">
+            Production-minded quality automation for coding agents. Audit, generate agent tasks, apply safe fixes,
+            and ship with confidence.
+          </p>
+        </div>
+        <div class="hero-badge" id="scoreBandBadge">Awaiting run</div>
+      </header>
+
+      <section class="panel controls">
+        <div class="path-grid">
+          <label for="projectPath">Project Path</label>
+          <input id="projectPath" placeholder="/absolute/path/to/project" />
+        </div>
+
+        <div class="beginner-actions">
+          <button id="auditBtn" class="btn btn-secondary">1) Run Audit</button>
+          <button id="shipBtn" class="btn btn-primary">2) Launch Ship Sequence</button>
+          <button id="tutorialStartBtn" class="btn btn-secondary">Start Beginner Tutorial</button>
+          <button id="tutorialNextBtn" class="btn btn-ghost">Do Next Tutorial Step</button>
+        </div>
+
+        <div id="advancedActions" class="action-grid advanced-actions is-hidden">
+          <button id="packBtn" class="btn btn-secondary">Generate Agent Pack</button>
+          <button id="coachBtn" class="btn btn-secondary">Run Coach</button>
+          <button id="roadmapBtn" class="btn btn-secondary">Build Roadmap</button>
+        </div>
+
+        <div class="toggles">
+          <label class="switch-wrap">
+            <input type="checkbox" id="applySafeToggle" checked />
+            <span>Apply safe starter files in Ship sequence</span>
+          </label>
+          <div class="toggle-buttons">
+            <button id="toggleAdvancedBtn" class="btn btn-ghost">Show Advanced Actions</button>
+            <button id="clearHistoryBtn" class="btn btn-ghost">Clear Run History</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel tutorial" id="tutorialPanel" data-float="card">
+        <div class="tutorial-head">
+          <h2>Beginner Tutorial</h2>
+          <span id="tutorialStatusBadge" class="hero-badge">Not started</span>
+        </div>
+        <p id="tutorialHint" class="detail">
+          Click "Start Beginner Tutorial" for a guided, step-by-step first run.
+        </p>
+        <div class="tutorial-progress"><i id="tutorialProgressBar"></i></div>
+        <ol id="tutorialSteps" class="tutorial-steps"></ol>
+      </section>
+
+      <section class="dashboard">
+        <article class="panel score" id="scorePanel" data-float="card">
+          <h2>Projected Score</h2>
+          <div class="score-main">
+            <div class="dial" id="overallDial"><span id="overallScore">0.0</span></div>
+            <div class="score-meta">
+              <p id="deltaPill" class="delta">No run yet</p>
+              <p id="passRate">Pass rate: 0%</p>
+            </div>
+          </div>
+
+          <div class="category-grid">
+            <div class="metric">
+              <div><span>Usefulness</span><strong id="usefulnessValue">0.0</strong></div>
+              <div class="bar"><i id="usefulnessBar"></i></div>
+            </div>
+            <div class="metric">
+              <div><span>Impact</span><strong id="impactValue">0.0</strong></div>
+              <div class="bar"><i id="impactBar"></i></div>
+            </div>
+            <div class="metric">
+              <div><span>Execution</span><strong id="executionValue">0.0</strong></div>
+              <div class="bar"><i id="executionBar"></i></div>
+            </div>
+            <div class="metric">
+              <div><span>Innovation</span><strong id="innovationValue">0.0</strong></div>
+              <div class="bar"><i id="innovationBar"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel health" data-float="card">
+          <h2>Quality Breakdown</h2>
+          <div class="chip-row">
+            <span class="chip pass">Pass: <strong id="passCount">0</strong></span>
+            <span class="chip warn">Warn: <strong id="warnCount">0</strong></span>
+            <span class="chip fail">Fail: <strong id="failCount">0</strong></span>
+          </div>
+          <div class="chip-row">
+            <span class="chip high">High: <strong id="highCount">0</strong></span>
+            <span class="chip medium">Medium: <strong id="mediumCount">0</strong></span>
+            <span class="chip low">Low: <strong id="lowCount">0</strong></span>
+          </div>
+          <h3>Top Actions</h3>
+          <ul id="topActions" class="plain-list"></ul>
+        </article>
+
+        <article class="panel history" data-float="card">
+          <h2>Run History</h2>
+          <ul id="historyList" class="history-list"></ul>
+        </article>
+      </section>
+
+      <section class="showcase">
+        <article class="panel simulator" id="simulatorPanel" data-float="card">
+          <h2>What-If Score Simulator</h2>
+          <p class="detail">
+            Toggle top fixes to preview projected score lift before you edit code.
+          </p>
+          <div class="sim-metrics">
+            <div class="sim-metric">
+              <span>Current</span>
+              <strong id="simCurrentScore">0.0</strong>
+            </div>
+            <div class="sim-metric">
+              <span>Projected</span>
+              <strong id="simProjectedScore">0.0</strong>
+            </div>
+            <div class="sim-metric">
+              <span>Lift</span>
+              <strong id="simLift">+0.0</strong>
+            </div>
+          </div>
+          <div class="sim-progress"><i id="simProgressBar"></i></div>
+          <ul id="simChecklist" class="sim-list"></ul>
+        </article>
+
+        <article class="panel milestones" id="milestonePanel" data-float="card">
+          <h2>Milestone Tracker + Demo Tour</h2>
+          <p class="detail">Unlock score milestones and auto-highlight the story flow while recording.</p>
+          <ul id="milestoneList" class="milestone-list"></ul>
+          <p id="milestoneStatus" class="detail">Run an action to populate milestones.</p>
+          <div class="tour-controls">
+            <button id="startTourBtn" class="btn btn-secondary">Start Demo Tour</button>
+            <button id="stopTourBtn" class="btn btn-ghost">Stop Tour</button>
+          </div>
+          <div class="tour-progress"><i id="tourProgressBar"></i></div>
+          <ol id="tourSteps" class="tour-steps"></ol>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <article class="panel findings" id="findingsPanel" data-float="card">
+          <h2>Open Findings</h2>
+          <div id="findingsList" class="findings-list"></div>
+        </article>
+
+        <article class="panel tasks" id="tasksPanel" data-float="card">
+          <h2>Agent Task Queue</h2>
+          <div class="task-table-wrap">
+            <table class="task-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Severity</th>
+                  <th>Title</th>
+                  <th>ETA</th>
+                </tr>
+              </thead>
+              <tbody id="taskRows"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="outputs">
+        <article class="panel artifacts" data-float="card">
+          <h2>Artifacts</h2>
+          <ul id="artifactList" class="artifact-list"></ul>
+        </article>
+
+        <article class="panel preview" id="previewPanel" data-float="card">
+          <div class="preview-head">
+            <h2 id="previewTitle">Preview</h2>
+            <button id="copyPreviewBtn" class="btn btn-ghost">Copy</button>
+          </div>
+          <pre id="previewContent">Run an action to populate the workspace.</pre>
+        </article>
+      </section>
+
+      <section class="panel timeline" id="timelinePanel" data-float="card">
+        <h2>Timeline</h2>
+        <ol id="timelineList"></ol>
+      </section>
+    </main>
+
+    <div id="celebrationLayer" class="celebration-layer" aria-hidden="true"></div>
+    <div id="toast" class="toast"></div>
+
+    <script src="/fluid.js" defer></script>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

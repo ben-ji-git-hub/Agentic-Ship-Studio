@@ -1,0 +1,10 @@
+Vibe Sentinel is the reliability layer for agent-built projects.
+Instead of shipping a prototype and hoping it passes review, you run one repeatable loop.
+Audit quality, prioritize fixes, execute the ship sequence, and re-check.
+The dashboard is designed for beginners first.
+It starts with guided actions, plain-language coaching, and a clear score story.
+The tutorial page markets the workflow in under a minute, so new users understand value immediately.
+The artifacts page keeps every output in one place, including reports, prompts, and submission assets.
+The OpenClaw page exposes bridge-ready actions for agent orchestration over HTTP.
+Together, these pages make the product both explainable and operational.
+You get faster iteration, more credible submissions, and a cleaner handoff between humans and coding agents.

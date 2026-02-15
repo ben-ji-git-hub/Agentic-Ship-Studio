@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Sentinel Studio - OpenClaw</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <div id="fluidSpotlight" class="fluid-spotlight"></div>
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <main class="studio">
+      <nav class="panel top-nav">
+        <a href="/index.html" class="nav-link">Dashboard</a>
+        <a href="/artifacts.html" class="nav-link">Artifacts</a>
+        <a href="/openclaw.html" class="nav-link active">OpenClaw</a>
+        <a href="/tutorial.html" class="nav-link">Tutorial</a>
+      </nav>
+
+      <header class="panel hero" data-float="card">
+        <div>
+          <p class="eyebrow">OPENCLAW BRIDGE</p>
+          <h1>External Agent Access</h1>
+          <p class="subtitle">
+            Run Studio actions over HTTP for OpenClaw or other local agents. Use API key mode for controlled access.
+          </p>
+        </div>
+        <div class="hero-badge" id="openclawBridgeBadge">Bridge unknown</div>
+      </header>
+
+      <section class="panel controls" data-float="card">
+        <div class="path-grid">
+          <label for="openclawProjectPath">Project Path</label>
+          <input id="openclawProjectPath" placeholder="/absolute/path/to/project" />
+        </div>
+        <div class="path-grid">
+          <label for="openclawApiKey">OpenClaw API Key (optional)</label>
+          <input id="openclawApiKey" placeholder="Paste key if Studio requires one" />
+        </div>
+      </section>
+
+      <section class="showcase">
+        <article class="panel" data-float="card">
+          <h2>Bridge Status</h2>
+          <p class="detail" id="openclawStatusText">Click probe to check bridge availability.</p>
+          <div class="action-grid action-grid-compact">
+            <button id="openclawProbeBtn" class="btn btn-secondary">Probe Bridge</button>
+            <button id="openclawCopyCurlBtn" class="btn btn-ghost">Copy cURL</button>
+          </div>
+          <pre id="openclawStatusPreview">No response yet.</pre>
+        </article>
+
+        <article class="panel" data-float="card">
+          <h2>Execute Through Bridge</h2>
+          <div class="bridge-row">
+            <label for="openclawAction">Action</label>
+            <select id="openclawAction">
+              <option value="audit">audit</option>
+              <option value="agent-pack">agent-pack</option>
+              <option value="coach">coach</option>
+              <option value="roadmap">roadmap</option>
+              <option value="ship" selected>ship</option>
+            </select>
+          </div>
+          <label class="switch-wrap">
+            <input type="checkbox" id="openclawApplySafe" checked />
+            <span>apply_safe (for coach/ship)</span>
+          </label>
+          <div class="action-grid action-grid-compact">
+            <button id="openclawRunBtn" class="btn btn-primary">Run Action</button>
+            <button id="openclawCopyRequestBtn" class="btn btn-ghost">Copy Request JSON</button>
+          </div>
+          <pre id="openclawRunPreview">No action run yet.</pre>
+        </article>
+      </section>
+
+      <section class="panel timeline" data-float="card">
+        <h2>OpenClaw Timeline</h2>
+        <ol id="openclawTimeline"></ol>
+      </section>
+    </main>
+
+    <div id="openclawToast" class="toast"></div>
+    <script src="/fluid.js" defer></script>
+    <script src="/openclaw.js" defer></script>
+  </body>
+</html>

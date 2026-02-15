@@ -1,0 +1,172 @@
+Metadata-Version: 2.4
+Name: vibe-sentinel
+Version: 0.2.0
+Summary: A reliability and submission-readiness auditor for vibe-coded projects
+Author: BridgeMind Vibeathon Builder
+License: MIT
+Keywords: vibe coding,hackathon,quality,audit,cli
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# Vibe Sentinel
+
+Build fast. Ship credible.
+
+`vibe-sentinel` is a Vibeathon-focused reliability layer for vibe-coded projects. It audits your repo, predicts judging readiness, and gives you a beginner-friendly fix path.
+
+## Positioning
+
+Most projects in vibe competitions optimize for generation speed. Vibe Sentinel optimizes for shipping confidence: clear docs, test coverage, CI proof, safe secrets handling, and demo readiness.
+
+## Problem
+
+Vibe-coded prototypes often look impressive but fail during evaluation because basics are missing:
+
+- unclear onboarding
+- no reproducible setup
+- no automated checks
+- weak submission artifacts
+
+## Solution
+
+Vibe Sentinel provides a clear loop:
+
+1. Audit quality and submission readiness.
+2. Turn findings into prioritized actions.
+3. Generate beginner coaching cards with exact next steps.
+
+## Core Features
+
+- Weighted audit across `usefulness`, `impact`, `execution`, and `innovation`.
+- Secret leak detection for common API/token patterns.
+- Template scaffolding for `SPEC.md`, `DEMO_SCRIPT.md`, `SUBMISSION.md`, and `UNIQUE_EDGE.md`.
+- Prioritized roadmap generation from audit findings.
+- **New: Beginner Fix Coach (`coach`)**
+
+## New Differentiating Feature: Beginner Fix Coach
+
+`vibe-sentinel coach` converts technical findings into plain-English action cards.
+
+Why this matters:
+
+- Beginners get concrete "do this now" steps.
+- Each finding includes why it matters and how to verify the fix.
+- Optional `--apply-safe` mode creates missing starter files (tests, CI, and submission templates) without overwriting existing work.
+
+## Installation
+
+```bash
+python -m pip install -e .
+```
+
+## Quickstart
+
+```bash
+vibe-sentinel init
+vibe-sentinel audit . --output-dir .vibe-sentinel
+vibe-sentinel coach --report .vibe-sentinel/report.json --output .vibe-sentinel/coach.md --project .
+```
+
+## Commands
+
+```bash
+vibe-sentinel init
+vibe-sentinel audit . --output-dir .vibe-sentinel
+vibe-sentinel roadmap --report .vibe-sentinel/report.json --output .vibe-sentinel/roadmap.md
+vibe-sentinel coach --report .vibe-sentinel/report.json --output .vibe-sentinel/coach.md --project .
+vibe-sentinel studio --host 127.0.0.1 --port 8765
+```
+
+## Visual GUI: Studio
+
+Launch the local visual interface:
+
+```bash
+vibe-sentinel studio
+```
+
+Then open `http://127.0.0.1:8765`.
+
+Studio gives you:
+
+- Animated score dial and category breakdown
+- One-click `Audit`, `Coach`, and `Roadmap`
+- **Agentic Auto-Improve** (runs full cycle + safe starter file generation)
+- Artifact tracking for reports and generated markdown
+
+## Submission-Ready Flow (Judge-Friendly)
+
+Run this from a clean clone:
+
+```bash
+python -m pip install -e . && \
+  vibe-sentinel init && \
+  vibe-sentinel audit . --output-dir .vibe-sentinel && \
+  vibe-sentinel coach --report .vibe-sentinel/report.json --output .vibe-sentinel/coach.md --project . --apply-safe && \
+  vibe-sentinel roadmap --report .vibe-sentinel/report.json --output .vibe-sentinel/roadmap.md
+```
+
+Expected output artifacts:
+
+- `.vibe-sentinel/report.json`
+- `.vibe-sentinel/report.md`
+- `.vibe-sentinel/coach.md`
+- `.vibe-sentinel/roadmap.md`
+
+## Video Demo Kit
+
+Use these built-in assets to record a polished demo quickly:
+
+- `/Users/ben/Desktop/Ben's Agentic Projects/BridgeMind Hackathon/VIDEO_DEMO_PLAN.md`
+- `/Users/ben/Desktop/Ben's Agentic Projects/BridgeMind Hackathon/scripts/create_video_demo_repo.sh`
+- `/Users/ben/Desktop/Ben's Agentic Projects/BridgeMind Hackathon/scripts/run_video_demo.sh`
+
+## Example Console Output
+
+```text
+Projected Vibeathon score: 82.5/100
+Category scores: usefulness 90.0, impact 80.0, execution 75.0, innovation 85.0
+Findings: 1 fail, 2 warn
+Top fixes:
+- [high] Automated Tests: Add at least one smoke test and one behavior test before submission.
+- [medium] Continuous Integration: Add a CI workflow that runs tests and basic linting on every push.
+```
+
+## Scoring Model
+
+Category blend:
+
+- 40% usefulness
+- 25% impact
+- 20% execution
+- 15% innovation
+
+## Project Structure
+
+```text
+vibe_sentinel/
+  checks.py
+  cli.py
+  coach.py
+  report.py
+  templates.py
+tests/
+  test_checks.py
+  test_cli.py
+  test_coach.py
+```
+
+## Testing
+
+```bash
+python -m unittest discover -s tests -p 'test_*.py'
+```
+
+## License
+
+MIT

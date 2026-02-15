@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Sentinel Studio - Tutorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <div id="fluidSpotlight" class="fluid-spotlight"></div>
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <main class="studio tutorial-studio">
+      <nav class="panel top-nav">
+        <a href="/index.html" class="nav-link">Dashboard</a>
+        <a href="/artifacts.html" class="nav-link">Artifacts</a>
+        <a href="/openclaw.html" class="nav-link">OpenClaw</a>
+        <a href="/tutorial.html" class="nav-link active">Tutorial</a>
+      </nav>
+
+      <header class="panel hero tutorial-hero" data-float="card">
+        <div>
+          <p class="eyebrow">VIBE SENTINEL</p>
+          <h1>Ship Credible Projects Fast</h1>
+          <p class="subtitle">
+            Vibe Sentinel turns rough prototypes into submission-ready builds through one repeatable loop:
+            audit, prioritize, fix, re-check.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="/index.html">Open Dashboard</a>
+            <button id="copyStarterCmdBtn" class="btn btn-secondary">Copy Starter Command</button>
+          </div>
+        </div>
+        <div class="score-story">
+          <p class="detail">Typical first run improvement</p>
+          <div class="story-scores">
+            <div class="story-card">
+              <span>Before</span>
+              <strong id="storyBefore">31.5</strong>
+            </div>
+            <div class="story-card">
+              <span>After</span>
+              <strong id="storyAfter">97.5</strong>
+            </div>
+            <div class="story-card">
+              <span>Lift</span>
+              <strong id="storyLift">+66.0</strong>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="showcase">
+        <article class="panel tutorial-step-card active" data-float="card">
+          <p class="step-eyebrow">Step 1</p>
+          <h2>Run Audit</h2>
+          <p class="detail">Instantly see score, blockers, and top actions.</p>
+        </article>
+        <article class="panel tutorial-step-card" data-float="card">
+          <p class="step-eyebrow">Step 2</p>
+          <h2>Launch Ship Sequence</h2>
+          <p class="detail">Auto-run audit, agent pack, coach, roadmap, and re-audit.</p>
+        </article>
+        <article class="panel tutorial-step-card" data-float="card">
+          <p class="step-eyebrow">Step 3</p>
+          <h2>Follow Coach Cards</h2>
+          <p class="detail">Beginner-friendly fixes with exact verification steps.</p>
+        </article>
+      </section>
+
+      <section class="panel flow-panel" data-float="card">
+        <div class="flow-head">
+          <h2>Live Flow Preview</h2>
+          <p id="flowHint" class="detail">Audit baseline quality and surface top blockers.</p>
+        </div>
+        <div class="flow-progress"><i id="flowProgress"></i></div>
+        <div class="flow-actions">
+          <a class="btn btn-secondary" href="/index.html">Start In Studio</a>
+          <button id="syncPathBtn" class="btn btn-ghost">Use My Last Project Path</button>
+        </div>
+      </section>
+
+      <section class="panel" data-float="card">
+        <h2>What You Get</h2>
+        <div class="marketing-grid">
+          <div class="marketing-chip">Deterministic scoring</div>
+          <div class="marketing-chip">Agent-ready task pack</div>
+          <div class="marketing-chip">Beginner coaching cards</div>
+          <div class="marketing-chip">OpenClaw API bridge</div>
+          <div class="marketing-chip">Artifact previews</div>
+          <div class="marketing-chip">Demo tour automation</div>
+        </div>
+      </section>
+    </main>
+
+    <div id="tutorialToast" class="toast"></div>
+    <script src="/fluid.js" defer></script>
+    <script src="/tutorial.js" defer></script>
+  </body>
+</html>

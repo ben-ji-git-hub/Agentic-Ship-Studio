@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:00,000
+Vibe Sentinel is the reliability layer for agent-built projects.
+
+2
+00:00:00,000 --> 00:00:00,000
+Instead of shipping a prototype and hoping it passes review, you run one repeatable loop.
+
+3
+00:00:00,000 --> 00:00:00,000
+Audit quality, prioritize fixes, execute the ship sequence, and re-check.
+
+4
+00:00:00,000 --> 00:00:00,000
+The dashboard is designed for beginners first.
+
+5
+00:00:00,000 --> 00:00:00,000
+It starts with guided actions, plain-language coaching, and a clear score story.
+
+6
+00:00:00,000 --> 00:00:00,000
+The tutorial page markets the workflow in under a minute, so new users understand value immediately.
+
+7
+00:00:00,000 --> 00:00:00,000
+The artifacts page keeps every output in one place, including reports, prompts, and submission assets.
+
+8
+00:00:00,000 --> 00:00:00,000
+The OpenClaw page exposes bridge-ready actions for agent orchestration over HTTP.
+
+9
+00:00:00,000 --> 00:00:00,000
+Together, these pages make the product both explainable and operational.
+
+10
+00:00:00,000 --> 00:00:00,000
+You get faster iteration, more credible submissions, and a cleaner handoff between humans and coding agents.

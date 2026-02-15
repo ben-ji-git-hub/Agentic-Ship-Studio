@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vibe-sentinel"
+version = "0.4.0"
+description = "A reliability and submission-readiness auditor for vibe-coded projects"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "BridgeMind Vibeathon Builder" }]
+keywords = ["vibe coding", "hackathon", "quality", "audit", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+
+[project.scripts]
+vibe-sentinel = "vibe_sentinel.cli:main"
+
+[tool.setuptools]
+packages = ["vibe_sentinel"]
+
+[tool.setuptools.package-data]
+vibe_sentinel = ["web/*.html", "web/*.css", "web/*.js"]

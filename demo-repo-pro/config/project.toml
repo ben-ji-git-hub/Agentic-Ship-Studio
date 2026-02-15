@@ -1,0 +1,3 @@
+app_name = "Signal Garden"
+timezone = "America/Los_Angeles"
+max_focus_blocks = 5

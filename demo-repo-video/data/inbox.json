@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Fix onboarding bug in settings screen",
+    "impact": "high",
+    "duration_minutes": 45
+  },
+  {
+    "title": "Draft release note for v0.3",
+    "impact": "medium",
+    "duration_minutes": 25
+  },
+  {
+    "title": "Respond to pilot user feedback",
+    "impact": "high",
+    "duration_minutes": 30
+  },
+  {
+    "title": "Refactor stale utility module",
+    "impact": "low",
+    "duration_minutes": 40
+  }
+]
