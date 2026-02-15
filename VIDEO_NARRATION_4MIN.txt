@@ -1,0 +1,77 @@
+Welcome to Vibe Sentinel, the agentic reliability layer for fast-moving project teams.
+In the next four minutes, I will show the complete workflow from first audit to submission-ready output.
+The goal is simple: keep the speed of vibe coding, but remove the risk of shipping a fragile demo.
+
+We start on the Tutorial page.
+This page is intentionally concise and marketing-forward.
+A beginner can immediately understand the product promise, the three-step loop, and the value they will get in the first run.
+The score cards show a realistic before-and-after story, and the call to action moves directly into the working dashboard.
+
+Now we open the Dashboard.
+This is the operational home for the full lifecycle.
+At the top, we set a project path.
+Then we use the beginner lane first.
+Run Audit is the baseline check, and Launch Ship Sequence is the one-command path to improve project quality.
+Everything else can stay hidden until the user is ready.
+
+I start the built-in beginner tutorial.
+This creates a guided sequence with visible progress, so new users know exactly what to do next.
+No guessing.
+No reading long docs first.
+Just a concrete path from zero to an improved score.
+
+Now we run the baseline audit.
+Vibe Sentinel scans the repo and scores usefulness, impact, execution, and innovation.
+It also identifies practical blockers like missing tests, weak documentation, absent CI, and artifact gaps.
+The point is not to produce noise.
+The point is to create an ordered, fixable plan.
+
+After the audit finishes, we scroll through the score breakdown and recommendations.
+You can immediately see where the project is weak and what actions provide the highest lift.
+This is critical in hackathon settings, where teams do not have time to manually triage dozens of quality issues.
+
+Next, I enable advanced actions and run them one by one.
+Agent Pack turns findings into structured tasks for coding agents.
+Coach generates beginner-friendly fix cards in plain language.
+Roadmap generates a practical sequence so improvements happen in the right order.
+These outputs reduce context switching between humans and agents.
+
+Now we launch the full Ship Sequence.
+This orchestrates the complete improvement loop:
+audit, task generation, coaching, roadmap, safe starter files, and re-check.
+Instead of running multiple commands manually, teams execute one workflow and keep momentum.
+This is where Vibe Sentinel becomes a true killer app for agentic development.
+
+After Ship Sequence completes, we start Demo Tour mode.
+Demo Tour automatically highlights the narrative flow for recordings and live presentations.
+It gives you a stable, repeatable story:
+score story, findings, tasks, artifacts, and timeline.
+That means less presentation chaos and a more credible demo under pressure.
+
+Now we move to the Artifacts page.
+This page is focused and fast.
+You can refresh artifacts from audit, run ship plus refresh, and preview generated outputs in one place.
+Everything needed for judges is centralized:
+report files, coaching output, roadmap, and agent prompts.
+No hunting through folders while screen sharing.
+
+From here, I trigger another refresh and ship cycle.
+This shows that the flow is repeatable, not a one-time scripted success.
+A reliable process is the real differentiator in competitions.
+Anyone can generate code quickly.
+Far fewer teams can prove consistent execution quality.
+
+Next we open the OpenClaw page.
+This is the bridge for external agent orchestration over HTTP.
+I set the project path, probe bridge status, and run an action through the bridge endpoint.
+You can also copy cURL or JSON request payloads for automation workflows.
+This makes Vibe Sentinel useful beyond a single UI session.
+
+Finally, we return to the Tutorial page.
+This closes the loop between discoverability and execution.
+The tutorial communicates the value clearly, and the studio proves it with real outputs and score movement.
+
+If you are building with coding agents, this is the core advantage:
+Vibe Sentinel gives you deterministic checkpoints, structured handoff, and submission-ready artifacts without slowing down creative velocity.
+You still build fast.
+You just ship with confidence.

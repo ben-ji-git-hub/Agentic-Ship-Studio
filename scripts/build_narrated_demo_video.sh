@@ -8,8 +8,8 @@ OUT_DIR="${ROOT_DIR}/.video_output"
 NARRATION_TEXT="${ROOT_DIR}/VIDEO_NARRATION.txt"
 
 OUT_MP4="${1:-${OUT_DIR}/vibe_sentinel_demo_final.mp4}"
-VOICE_NAME="${2:-Daniel}"
-VOICE_RATE="${3:-175}"
+VOICE_NAME="${2:-en-us+m3}"
+VOICE_RATE="${3:-158}"
 
 mkdir -p "${ASSETS_DIR}" "${OUT_DIR}"
 
@@ -18,8 +18,8 @@ if ! command -v ffmpeg >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! command -v say >/dev/null 2>&1; then
-  echo "Error: macOS 'say' command is required but not found."
+if ! command -v espeak >/dev/null 2>&1; then
+  echo "Error: espeak is required but not found. Install with: brew install espeak"
   exit 1
 fi
 
@@ -46,14 +46,12 @@ for frame in "${frames[@]}"; do
   fi
 done
 
-AUDIO_AIFF="${ASSETS_DIR}/narration.aiff"
 AUDIO_WAV="${ASSETS_DIR}/narration.wav"
 SUB_SRT="${ASSETS_DIR}/narration.srt"
 BASE_VIDEO="${ASSETS_DIR}/base_slideshow.mp4"
 FINAL_VIDEO="${OUT_MP4}"
 
-say -v "${VOICE_NAME}" -r "${VOICE_RATE}" -f "${NARRATION_TEXT}" -o "${AUDIO_AIFF}"
-ffmpeg -y -i "${AUDIO_AIFF}" -ar 48000 -ac 1 "${AUDIO_WAV}" >/dev/null 2>&1
+espeak -v "${VOICE_NAME}" -s "${VOICE_RATE}" -f "${NARRATION_TEXT}" -w "${AUDIO_WAV}"
 
 python3 - "${NARRATION_TEXT}" "${AUDIO_WAV}" "${SUB_SRT}" <<'PY'
 import re
